@@ -1,0 +1,35 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css";
+@font-face {
+  font-family: "Pokemon GB";
+  src: url("assets/fonts/Pokemon_GB.ttf");
+}
+
+body {
+  background: black;
+  font-family: "Pokemon GB", sans-serif;
+  display: block;
+}
+
+header {
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.pokemon-list,
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.team-name {
+  color: yellow;
+}

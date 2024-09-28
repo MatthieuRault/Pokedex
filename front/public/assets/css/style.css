@@ -1,0 +1,78 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css";
+@font-face {
+  font-family: 'Pokemon GB';
+  src: url('../fonts/Pokemon_GB.ttf');
+}
+
+body {
+  background: linear-gradient(#59976a, #00c6c3);
+  font-family: 'Pokemon GB', sans-serif;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  margin: 20px;
+}
+
+h1 {
+  color:rgb(255, 0, 0);
+  font-weight: bold;
+  font-size: 2rem
+}
+
+h2#type-title {
+  display: flex;
+    height: 2rem;    
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    background: black;
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(139, 139, 139, 0.528);
+  transition: 0.3s;
+  background-color:#000000;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgb(251, 163, 0);
+}
+
+.card-header-title {
+  font-size: 20px;  
+}
+
+.is-rounded {
+  padding: 1rem;
+}
+
+.image img {  
+  box-shadow: 0 4px 8px 0 rgb(68, 255, 0);
+  transition: 0.3s;  
+}
+
+.image img:hover {
+  box-shadow: 0 8px 16px 0 rgb(255, 0, 0);
+  transition: 0.3s;
+}
+
+.column {
+  padding: 0;
+}
+
+.title {   
+  color:red;
+}
+
+.subtitle {
+  padding-top: 1rem;
+  color: blue;
+}
