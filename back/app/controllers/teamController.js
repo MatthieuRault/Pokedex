@@ -13,7 +13,7 @@ export const getOneTeam = async (req, res) => {
   if (isNaN(teamId)) {
     return res
       .status(404)
-      .json({ error: "team not found. Please verify the provided ID." });
+      .json({ error: "Team not found. Please verify the provided ID." });
   }
 
   // Récupérer la team en BDD avec ses pokémons
@@ -105,4 +105,52 @@ export const deleteTeam = async (req, res) => {
   await team.destroy();
 
   res.status(204).end(); // Renvoie un No Content (204)
+};
+
+export const addPokemonToTeam = async (req, res) => {
+  const teamId = parseInt(req.params.teamId);
+  const pokemonId = parseInt(req.params.pokemonId);
+
+  if (isNaN(teamId) || isNaN(pokemonId)) {
+    return res.status(400).json({ error: "Invalid team or pokemon ID." });
+  }
+
+  const team = await Team.findByPk(teamId);
+  const pokemon = await Pokemon.findByPk(pokemonId);
+
+  if (!team || !pokemon) {
+    return res.status(404).json({ error: "Team or Pokemon not found." });
+  }
+
+  await team.addPokemon(pokemon);
+
+  const updatedTeam = await Team.findByPk(teamId, {
+    include: "pokemons",
+  });
+
+  res.json(updatedTeam);
+};
+
+export const removePokemonFromTeam = async (req, res) => {
+  const teamId = parseInt(req.params.teamId);
+  const pokemonId = parseInt(req.params.pokemonId);
+
+  if (isNaN(teamId) || isNaN(pokemonId)) {
+    return res.status(400).json({ error: "Invalid team or pokemon ID." });
+  }
+
+  const team = await Team.findByPk(teamId);
+  const pokemon = await Pokemon.findByPk(pokemonId);
+
+  if (!team || !pokemon) {
+    return res.status(404).json({ error: "Team or Pokemon not found." });
+  }
+
+  await team.removePokemon(pokemon);
+
+  const updatedTeam = await Team.findByPk(teamId, {
+    include: "pokemons",
+  });
+
+  res.json(updatedTeam);
 };

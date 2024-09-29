@@ -28,10 +28,16 @@ router.patch("/teams/:id", cw(teamController.updateTeam));
 router.delete("/teams/:id", cw(teamController.deleteTeam));
 
 // Route pour ajouter un Pokemon dans une team
-router.put("/teams/:id/pokemons/:id");
+router.put(
+  "/teams/:teamId/pokemons/:pokemonId",
+  cw(teamController.addPokemonToTeam)
+);
 
-// Route pour supprimer un/plusieurs Pokémon(s) de la liste d'une team en question
-router.delete("/teams/:id/pokemons/:id");
+// Route pour supprimer un Pokemon de la liste d'une team
+router.delete(
+  "/teams/:teamId/pokemons/:pokemonId",
+  cw(teamController.removePokemonFromTeam)
+);
 
 // Route permettant de voter un Pokémon
 router.post("/pokemons/:id/votes");

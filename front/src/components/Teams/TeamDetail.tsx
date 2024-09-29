@@ -4,6 +4,7 @@ import { ITeam } from "../../@types/team";
 import axios from "axios";
 import { apiUrl } from "../../config";
 import { TeamForm } from "./TeamForm";
+import { TeamPokemonSelector } from "./TeamPokemonSelector";
 
 export const TeamDetail = () => {
   const { id } = useParams();
@@ -36,6 +37,20 @@ export const TeamDetail = () => {
     navigate("/teams");
   };
 
+  const handleAddPokemon = async (pokemonId: number) => {
+    if (team && team.pokemons && team.pokemons.length < 6) {
+      await axios.put(`${apiUrl}/teams/${id}/pokemons/${pokemonId}`);
+      fetchTeamById();
+    } else {
+      alert("Une équipe ne peut pas avoir plus de 6 Pokémon !");
+    }
+  };
+
+  const handleRemovePokemon = async (pokemonId: number) => {
+    await axios.delete(`${apiUrl}/teams/${id}/pokemons/${pokemonId}`);
+    fetchTeamById();
+  };
+
   if (!team) return <div>Chargement...</div>;
 
   return (
@@ -57,6 +72,9 @@ export const TeamDetail = () => {
           <button onClick={handleDelete}>Supprimer</button>
         </>
       )}
+      {team.pokemons && team.pokemons.length < 6 && (
+        <TeamPokemonSelector onAddPokemon={handleAddPokemon} />
+      )}
       <div className="pokemon-grid">
         {team.pokemons &&
           team.pokemons.map((pokemon) => (
@@ -68,9 +86,15 @@ export const TeamDetail = () => {
                 />
               </Link>
               <p>{pokemon.name}</p>
+              <button onClick={() => handleRemovePokemon(pokemon.id)}>
+                Supprimer
+              </button>
             </div>
           ))}
       </div>
+      <p>
+        Pokémon dans l'équipe : {team.pokemons ? team.pokemons.length : 0}/6
+      </p>
     </div>
   );
 };
