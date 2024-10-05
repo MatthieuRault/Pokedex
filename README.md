@@ -1,25 +1,49 @@
-# S14-Pokedex
+# Projet Pokédex
 
+Ce projet est une application Pokédex fullstack, comprenant un backend Node.js avec Express et PostgreSQL, et un frontend React.
 
-## Structure du projet : 
+## Structure du projet
 
-### Dossier back : 
+- Un dossier back.
+- Un dossier front.
+- Un dossier docs.
 
-- Un dossier data qui contient les fichiers sql :
-    - create_tables.sql : permet de créer les tables de la bases de données
-    - seeding_tables.sql : permet de remplir les tables avec les données
-- .env.example : nos variables d'environnement.
-- package.json : contient nos dependances & les scripts (que vous devrez faire en vous inspirant des projets précédents.)
+## Back
 
-### Dossier docs : 
+Le back est construit avec Node.js, Express, et utilise PostgreSQL comme ORM pour la Base de Données.
 
-- endpoints.md : contient la liste des routes qui devront être faites dans l'api
-- installation.md : contient une courte série d'instruction pour lancer le projet. 
-- roadmap.md : contient les attendus du projet sous forme de user-stories.
+### Configuration
 
-### Dossier front : 
+- Naviguer dans le dossier "back".
+- Installer les dépendances avec `pnpm i`.
+- Configurer son fichier `.env`.
+- Créer la base de données dans son terminal avec PostgreSQL.
+- Utiliser les scripts dans le fichier `package.json` pour les fichiers SQL. (db:create, db:seeding, db:reset)
 
-- Un dossier assets qui contient : 
-  - icons : un dossier dans lequel stocker vos icons perso svg (contient déjà une pokeball)
-  - img : contient les images des pokemons, les images portent le nom du numero du pokemon (<numero>.webp)
-- Un index.html avec un début de structure que vous êtes libre d'adapter.
+### Lancement du serveur
+
+`pnpm dev`
+
+## Front
+
+Le front est construit avec React.
+
+### Configuration
+
+- Naviguer dans le dossier "front".
+- Installer les dépendances avec `pnpm i`.
+
+### Lancement de l'apllication
+
+`pnpm dev`
+
+## Documentation
+
+La documentation du projet se trouve dans le dossier `docs`.
+
+Elle comprend :
+
+- Le dictionnaire des données
+- Le Modèle Conceptuel des Données (MCD).
+- Le Modèle Logique des Données (MLD).
+- Le Modèle Physique des Données (MPD).
