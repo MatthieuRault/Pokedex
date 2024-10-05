@@ -8,7 +8,7 @@ export const TypeList = () => {
   const [types, setTypes] = useState<IPokemonType[]>([]);
 
   const fetchTypes = async () => {
-    const res = await axios(`${apiUrl}/types`);
+    const res = await axios.get(`${apiUrl}/types`);
     setTypes(res.data);
   };
 

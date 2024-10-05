@@ -12,7 +12,7 @@ export const PokemonDetail = () => {
   const [maxPokemonHp, setMaxPokemonHp] = useState<number | null>(null);
 
   const fetchPokemonById = async () => {
-    const res = await axios(`${apiUrl}/pokemons/${id}`);
+    const res = await axios.get(`${apiUrl}/pokemons/${id}`);
     setPokemon(res.data);
     setMaxPokemonHp(res.data.hp);
   };

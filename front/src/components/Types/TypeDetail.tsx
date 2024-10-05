@@ -9,7 +9,7 @@ export const TypeDetail = () => {
   const [type, setType] = useState<IPokemonType>();
 
   const fetchTypeById = async () => {
-    const res = await axios(`${apiUrl}/types/${id}`);
+    const res = await axios.get(`${apiUrl}/types/${id}`);
     setType(res.data);
   };
 

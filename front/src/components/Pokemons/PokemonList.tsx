@@ -8,7 +8,7 @@ const PokemonList = (): JSX.Element => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
 
   const fetchPokemons = async () => {
-    const res = await axios(`${apiUrl}/pokemons`);
+    const res = await axios.get(`${apiUrl}/pokemons`);
     setPokemons(res.data);
   };
 
