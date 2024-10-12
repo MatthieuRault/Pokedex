@@ -1,1 +1,1 @@
-export const apiUrl = "http://localhost:3000";
+export const apiUrl = "https://pokedex-9tcm.onrender.com";
